@@ -24,6 +24,8 @@ export default function RateSofaModalForm({ sofaId, userEmail, type, isSelfOpen,
 
     const { setSofaState, sofaState } = useContext(SofaStateContext)
 
+    console.log(sofaId)
+
     const [report, setReport] = useState<string>()
 
     const handleSubmit = async (e: FormEvent) => {
@@ -50,12 +52,12 @@ export default function RateSofaModalForm({ sofaId, userEmail, type, isSelfOpen,
             >
                 <ModalOverlay />
                 <ModalContent>
-                    <ModalHeader>Editar sofá {type}</ModalHeader>
+                    <ModalHeader>Avaliar sofá {type}</ModalHeader>
                     <form id="saveForm" onSubmit={handleSubmit} />
                     <ModalBody pb={6}>
                         <Select id='report' placeholder='Avaliação' name='report' value={report} onChange={(e) => setReport(e.target.value)}>
-                            <option value='option1'>Aprovado</option>
-                            <option value='option2'>Reprovado</option>
+                            <option value='Aprovado'>Aprovado</option>
+                            <option value='Reprovado'>Reprovado</option>
                         </Select>
                     </ModalBody>
                     <ModalFooter>

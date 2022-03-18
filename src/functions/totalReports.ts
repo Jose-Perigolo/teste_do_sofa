@@ -2,14 +2,15 @@ export default function totalReports(response: any, userEmail: string | undefine
     const negRates = response.data.sofas.map((sofa: { negrates: any[]; }) =>
         sofa.negrates.find((email: string | undefined) => email === userEmail))
 
-    const negZero = typeof negRates[0] === 'undefined'
+    const negValue = negRates.filter((user: any) => typeof user !== 'undefined')
 
     const posRates = response.data.sofas.map((sofa: { posrates: any[]; }) =>
         sofa.posrates.find((email: string | undefined) => email === userEmail))
 
-    const posZero = typeof posRates[0] === 'undefined'
+    const posValue = posRates.filter((user: any) => typeof user !== 'undefined')
 
-    const total = (negZero ? 0 : negRates.length) + (posZero ? 0 : posRates.length)
+
+    const total = negValue.length + posValue.length
 
     return total
 }

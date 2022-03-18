@@ -8,6 +8,7 @@ import {
     ModalBody,
     Text
 } from '@chakra-ui/react'
+import { useToast } from '@chakra-ui/react'
 import axios from "axios";
 import { FormEvent, useContext, useState } from "react";
 import { SofaStateContext } from "../../../contexts/SofaStateContext";
@@ -29,6 +30,8 @@ const initialState = {
 };
 
 export default function RegisterSofaModalForm({ isSelfOpen, onSelfClose }: RegisterSofaModalFormProps) {
+
+    const toast = useToast();
 
     const [{ type, seats, length, width, depth }, setState] = useState(initialState)
 
@@ -67,6 +70,14 @@ export default function RegisterSofaModalForm({ isSelfOpen, onSelfClose }: Regis
         setSofaState(!sofaState);
         setLocalImageUrl(null);
         clearState();
+
+        toast({
+            title: 'Sofa registrado',
+            description: "Agora outros usuários podem avaliar este sofá",
+            status: 'success',
+            duration: 5000,
+            isClosable: true,
+        })
 
     }
 

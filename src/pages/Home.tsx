@@ -9,15 +9,17 @@ import { AuthContext } from "../contexts/AuthContext";
 import totalReports from "../functions/totalReports";
 import api from "../services/api";
 import SofaProps from "../types/sofa";
-
+import { useToast } from '@chakra-ui/react'
 
 export default function Home() {
 
     const { user } = useContext(AuthContext)
 
+    const toast = useToast();
+
     const [rateCount, setRateCount] = useState<any>(null)
     const [sofaCount, setSofaCount] = useState<any>(null)
-    const [sofa, setSofa] = useState<SofaProps>()
+    const [sofa, setSofa] = useState<SofaProps | null>(null)
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -52,12 +54,6 @@ export default function Home() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    if (!sofa) {
-        return (
-            <h1>Carregando</h1>
-        )
-    }
-
     return (
         <Flex
             as='main'
@@ -82,7 +78,7 @@ export default function Home() {
                     }
                 </Flex>
             </Flex>
-            <SofaContainer sofas={[sofa]} />
+            {sofa && <SofaContainer sofas={[sofa]} />}
             <RegisterSofaModalForm isSelfOpen={isOpen} onSelfClose={onClose} />
         </Flex>
     )

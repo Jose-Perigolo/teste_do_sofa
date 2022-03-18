@@ -9,13 +9,13 @@ import Login from "./pages/Login";
 import Sofas from "./pages/Sofas";
 import Reports from "./pages/Reports";
 
-import { getToken } from "./services/auth.service";
+import { getUser } from "./services/auth.service";
 import Inspectors from "./pages/Inspectors";
 
 function RequireAuth({ children }: { children: JSX.Element }) {
-    let auth = getToken();
+    const { token } = getUser();
 
-    if (!auth) {
+    if (!token) {
         return <Navigate to="/" replace />;
     }
 

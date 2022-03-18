@@ -51,7 +51,7 @@ export default function RateSofaContainer({ sofas }: RateContainerProps) {
                                 <Flex justify='center' align='center' color='white' bg='success' py='10px' px='30px' w='130px' h='35px'>Aprovado</Flex>
                                 :
                                 sofa.negrates?.find(email => email === user?.email) ?
-                                    <Flex justify='center' align='center' color='white' bg='success' py='10px' px='30px' w='130px' h='35px'>Reprovado</Flex>
+                                    <Flex justify='center' align='center' color='white' bg='danger' py='10px' px='30px' w='130px' h='35px'>Reprovado</Flex>
                                     :
                                     <>
                                         <Button ml='15px' w='243px' bg='info' bgicon='primary' onClick={onRateOpen}>Avaliar</Button>

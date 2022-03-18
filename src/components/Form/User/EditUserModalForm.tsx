@@ -9,7 +9,8 @@ import {
     Button as ChakraButton,
     Text
 } from '@chakra-ui/react'
-import { FormEvent, useState } from "react";
+import { FormEvent, useContext, useState } from "react";
+import { UserStateContext } from '../../../contexts/UserStateContext';
 import api from "../../../services/api";
 import { Input } from "../../Input";
 
@@ -29,6 +30,8 @@ const initialState = {
 export default function EditUserModalForm({ userId, name, isSelfOpen, onSelfClose }: EditUserModalFormProps) {
 
     const [{ username, email, role }, setState] = useState(initialState)
+
+    const { setUserState, userState } = useContext(UserStateContext)
 
     const clearState = () => {
         setState({ ...initialState });
@@ -53,6 +56,7 @@ export default function EditUserModalForm({ userId, name, isSelfOpen, onSelfClos
             .catch((error) => { console.log(error) })
 
         clearState();
+        setUserState(!userState)
 
     }
 
@@ -72,8 +76,8 @@ export default function EditUserModalForm({ userId, name, isSelfOpen, onSelfClos
                         <Input id='email' type='email' label='Novo Email' value={email} name='email' onChange={onChange} />
                         <Text size='14px'>Nova função</Text>
                         <Select id='role' placeholder='Role' name='role' value={role} onChange={onChange}>
-                            <option value='option1'>Inspetor</option>
-                            <option value='option2'>Admin</option>
+                            <option value='user'>Inspetor</option>
+                            <option value='admin'>Admin</option>
                         </Select>
                     </ModalBody>
 

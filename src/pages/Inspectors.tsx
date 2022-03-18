@@ -33,8 +33,6 @@ export default function Inspectors() {
 
     const { setUserState, userState } = useContext(UserStateContext)
 
-    const flag = useContext(UserStateContext)
-
     async function getUsers() {
 
         try {
@@ -50,7 +48,7 @@ export default function Inspectors() {
 
     useEffect(() => {
         getUsers()
-    }, [flag])
+    }, [])
 
     async function handleDelete(id: string) {
 

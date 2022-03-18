@@ -73,7 +73,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
             api.defaults.headers.common['Authorization'] = `Bearer ${token}`
 
-            navigate("/");
+            navigate("/home");
 
         } catch (error) {
             console.log(error)
