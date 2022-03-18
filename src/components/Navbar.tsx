@@ -12,7 +12,7 @@ export default function Navbar() {
         <Flex py='8px' my='60px' w='100%' justify='space-between'>
             <Flex fontWeight='400'>
                 <ButtonGroup variant='link' spacing='6'>
-                    <NavLink to='/'>
+                    <NavLink to='/home'>
                         <Button fontWeight='400'>Home</Button>
                     </NavLink>
                     <NavLink to='/sofas'>
@@ -29,7 +29,7 @@ export default function Navbar() {
                 </ButtonGroup>
             </Flex>
             <Flex>
-                <NavLink to='/login'>
+                <NavLink to='/'>
                     <Button variant='link' onClick={() => logout()} >Sair</Button>
                 </NavLink>
             </Flex>

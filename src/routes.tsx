@@ -16,7 +16,7 @@ function RequireAuth({ children }: { children: JSX.Element }) {
     let auth = getToken();
 
     if (!auth) {
-        return <Navigate to="/login" replace />;
+        return <Navigate to="/" replace />;
     }
 
     return children;
@@ -25,8 +25,8 @@ function RequireAuth({ children }: { children: JSX.Element }) {
 export default function MainRoutes() {
     return (
         <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/" element={<RequireAuth><Home /></RequireAuth>} />
+            <Route path="/" element={<Login />} />
+            <Route path="/home" element={<RequireAuth><Home /></RequireAuth>} />
             <Route path="/sofas" element={<RequireAuth><Sofas /></RequireAuth>
             } />
             <Route path="/reports" element={<RequireAuth><Reports /></RequireAuth>} />
