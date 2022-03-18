@@ -1,4 +1,4 @@
-import { Flex, Heading, Button as ChakraButton, useDisclosure } from "@chakra-ui/react";
+import { Flex, Heading, useDisclosure } from "@chakra-ui/react";
 import { useContext, useEffect, useState } from "react";
 import Button from "../components/Button";
 import RegisterSofaModalForm from "../components/Form/Sofa/RegisterSofaModalForm";
