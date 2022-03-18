@@ -9,13 +9,10 @@ import { AuthContext } from "../contexts/AuthContext";
 import totalReports from "../functions/totalReports";
 import api from "../services/api";
 import SofaProps from "../types/sofa";
-import { useToast } from '@chakra-ui/react'
 
 export default function Home() {
 
     const { user } = useContext(AuthContext)
-
-    const toast = useToast();
 
     const [rateCount, setRateCount] = useState<any>(null)
     const [sofaCount, setSofaCount] = useState<any>(null)
